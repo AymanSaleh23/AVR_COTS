@@ -1,0 +1,159 @@
+
+
+#define EXTE_INT0	0
+#define EXTE_INT1	1
+#define EXTE_INT2	2
+
+#define EXTE_FLAG_ON	1
+#define EXTE_FLAG_OFF	0
+
+#define EXTE_DIS		0
+#define EXTE_EN			1
+
+#define EXTE_LOW_SENSE			00
+#define EXTE_ON_CHANGE_SENSE	01
+#define EXTE_FALLING_SENSE		10
+#define EXTE_RAISING_SENSE		11
+
+typedef struct{
+	u8 EXTI_Num;
+	u8 EXTI_State;
+	u8 EXTI_Sence_State;
+}INT_type;
+
+u8 EXTI_u8Init		( const INT_type * Copy_ObjINT);
+
+////////////////////////////////////////////////////////////
+
+
+static const u8   Local_INTBits [3] = {6,7,5};
+static const u8 * Local_INTREGs [3] = {&MCUCR ,&MCUCR, &MCUCSR};
+
+u8 EXTI_u8Init		( const INT_type * Copy_ObjINT){
+
+
+	u8 Local_u8ErrorState = OK;
+	if ( EXTE_EN == Copy_ObjINT->EXTI_State){
+		if (EXTE_INT2 >= Copy_ObjINT->EXTI_Num ){
+			SET_BIT(*(Local_INTREGs[Copy_ObjINT->EXTI_Num]), Local_INTBits[ Copy_ObjINT->EXTI_Num]);
+		}
+	}
+
+	else if ( EXTE_DIS == Copy_ObjINT->EXTI_State){
+		if (EXTE_INT2 >= Copy_ObjINT->EXTI_Num ){
+			CLR_BIT(*(Local_INTREGs[Copy_ObjINT->EXTI_Num]), Local_INTBits[ Copy_ObjINT->EXTI_Num]);
+		}
+	}
+	else {
+		Local_u8ErrorState = NOK;
+	}
+
+}
+
+u8 EXTI_u8ChangeSense( INT_type * Copy_ObjINT , u8 Copy_u8NewSense){
+	s
+	tatic u8 Local_u8ISC[5] = {EXTE_ISC00 ,EXTE_ISC01 , EXTE_ISC10 , EXTE_ISC11 , EXTE_ISC2};
+	u8 Local_u8ErrorState = OK;
+
+	if (EXTE_INT2 != Copy_ObjINT->EXTI_Num){
+		if (EXTE_LOW_SENSE == Copy_u8NewSense){
+			CLR_BIT( *(Local_INTREGs[Copy_ObjINT->EXTI_Num]) , Local_u8ISC[Copy_ObjINT->EXTI_Num]);
+			CLR_BIT( *(Local_INTREGs[Copy_ObjINT->EXTI_Num]) , Local_u8ISC[(Copy_ObjINT->EXTI_Num)+1]);
+		}
+		else if (EXTE_ON_CHANGE_SENSE == Copy_u8NewSense){
+			SET_BIT( *(Local_INTREGs[Copy_ObjINT->EXTI_Num]) , Local_u8ISC[Copy_ObjINT->EXTI_Num]);
+			CLR_BIT( *(Local_INTREGs[Copy_ObjINT->EXTI_Num]) , Local_u8ISC[(Copy_ObjINT->EXTI_Num)+1]);
+		}
+		else{
+			Local_u8ErrorState = NOK;
+		}
+	}
+	if (EXTE_INT2 >= Copy_ObjINT->EXTI_Num){
+		if (EXTE_FALLING_SENSE == Copy_u8NewSense){
+			if (EXTE_INT2 < Copy_ObjINT->EXTI_Num){
+
+			}
+			if (EXTE_INT2 == Copy_ObjINT->EXTI_Num){
+
+			}
+			else {
+				Local_u8ErrorState = NOK;
+			}
+		}
+		else if (EXTE_RAISING_SENSE == Copy_u8NewSense){
+			if (EXTE_FALLING_SENSE == Copy_u8NewSense){
+				if (EXTE_INT2 < Copy_ObjINT->EXTI_Num){
+
+				}
+				if (EXTE_INT2 == Copy_ObjINT->EXTI_Num){
+
+				}
+				else {
+					Local_u8ErrorState = NOK;
+				}
+			}
+		}
+		else {
+			Local_u8ErrorState = NOK;
+		}
+	}
+	return Local_u8ErrorState;
+}
+
+////////////////////////////////////////////////
+#define GIE_I_BIT	7
+
+
+#define EXTE_ISC00	0
+#define EXTE_ISC01	1
+#define EXTE_ISC10	2
+#define EXTE_ISC11	3
+#define EXTE_ISC2	6
+
+#define EXTE_INT1_BIT	7
+#define EXTE_INT0_BIT	6
+#define EXTE_INT2_BIT	5
+
+
+#define EXTE_INTF1	7
+#define EXTE_INTF0	6
+#define EXTE_INTF2	5
+
+#define CONC(b7,b6,b5,b4,b3,b2,b1,b0)			CONC_HELLPER(b7,b6,b5,b4,b3,b2,b1,b0)
+#define CONC_HELLPER(b7,b6,b5,b4,b3,b2,b1,b0)	0b##b7##b6##b5##b4##b3##b2##b1##b0
+
+///////////////////////////
+
+
+
+/*	Options:-
+ *		EXTE_EN
+ *		EXTE_DIS
+ */
+
+#define EXTE_INT0_STATE		EXTE_EN
+#define EXTE_INT1_STATE		EXTE_DIS
+#define EXTE_INT2_STATE		EXTE_DIS
+
+/*	Options:-
+ *		EXTE_LOW_SENCE			00
+ *		EXTE_ON_CHANGE_SENCE	01
+ *		EXTE_FALLING_SENCE		10
+ *		EXTE_RAISING_SENCE		11
+ */
+
+#define EXTE_INT0_SENSE		EXTE_RAISING_SENSE
+#define EXTE_INT1_SENSE		EXTE_LOW_SENSE
+#define EXTE_INT2_SENSE		EXTE_RAISING_SENSE
+
+#if  EXTE_INT2_SENSE  == 	EXTE_RAISING_SENSE
+	#undef EXTE_INT2_SENSE
+	#define EXTE_INT2_SENSE		1
+#elif EXTE_INT2_SENSE  == 	EXTE_FALLING_SENSE
+	#define EXTE_INT2_SENSE		0
+#else
+#error "INT2 selected sense control is not supported"
+#endif
+
+#define MCUCR_INITILIZATION  	(MCUCR  | CONC(0,0,0,0,EXTE_INT1_SENSE,EXTE_INT0_SENSE))
+#define MCUCR_INITILIZATION		(MCUCSR | CONC(0,EXTE_INT2_SENSE,0,0,0,0,0,0))

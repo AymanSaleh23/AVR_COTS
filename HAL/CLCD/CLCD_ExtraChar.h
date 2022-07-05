@@ -1,0 +1,105 @@
+/**************************************************************************************/
+/**************************************************************************************/
+/*******************************	Author : Ayman Saleh	***************************/
+/*******************************	Date   : 26-8-2021		***************************/
+/*******************************	Layer  : HAL			***************************/
+/*******************************	SWC    : CLCD			***************************/
+/*******************************	Version: 1.0.0			***************************/
+/**************************************************************************************/
+/**************************************************************************************/
+
+
+#ifndef HAL_CLCD_CLCD_EXTRACHAR_H_
+#define HAL_CLCD_CLCD_EXTRACHAR_H_
+
+/*			Use 0 to off the pixel - 1 to on it */
+
+//For 1st custom char
+#define CLCD_CUSTOM_CHAR0_BYTE0	0b00000111
+#define CLCD_CUSTOM_CHAR0_BYTE1	0b00000100
+#define CLCD_CUSTOM_CHAR0_BYTE2	0b00011111
+#define CLCD_CUSTOM_CHAR0_BYTE3	0b00000000
+#define CLCD_CUSTOM_CHAR0_BYTE4	0b00000110
+#define CLCD_CUSTOM_CHAR0_BYTE5	0b00000110
+#define CLCD_CUSTOM_CHAR0_BYTE6	0b00000110
+
+
+
+//For 2nd custom char
+#define CLCD_CUSTOM_CHAR1_BYTE0	0b00000000
+#define CLCD_CUSTOM_CHAR1_BYTE1	0b00000000
+#define CLCD_CUSTOM_CHAR1_BYTE2	0b00000000
+#define CLCD_CUSTOM_CHAR1_BYTE3	0b00000001
+#define CLCD_CUSTOM_CHAR1_BYTE4 0b00011111
+#define CLCD_CUSTOM_CHAR1_BYTE5 0b00000000
+#define CLCD_CUSTOM_CHAR1_BYTE6 0b00011011
+
+
+//For 3rd custom char
+#define CLCD_CUSTOM_CHAR2_BYTE0	0b00000000
+#define CLCD_CUSTOM_CHAR2_BYTE1 0b00000000
+#define CLCD_CUSTOM_CHAR2_BYTE2 0b00000000
+#define CLCD_CUSTOM_CHAR2_BYTE3 0b00001111
+#define CLCD_CUSTOM_CHAR2_BYTE4 0b00001001
+#define CLCD_CUSTOM_CHAR2_BYTE5 0b00011001
+#define CLCD_CUSTOM_CHAR2_BYTE6 0b00001111
+
+
+//For 4th custom char
+#define CLCD_CUSTOM_CHAR3_BYTE0	0b00001100
+#define CLCD_CUSTOM_CHAR3_BYTE1 0b00000000
+#define CLCD_CUSTOM_CHAR3_BYTE2 0b00010001
+#define CLCD_CUSTOM_CHAR3_BYTE3 0b00010001
+#define CLCD_CUSTOM_CHAR3_BYTE4 0b00011111
+#define CLCD_CUSTOM_CHAR3_BYTE5 0b00000000
+#define CLCD_CUSTOM_CHAR3_BYTE6 0b00000000
+
+
+
+
+//For 5th custom char
+#define CLCD_CUSTOM_CHAR4_BYTE0	0b00000000
+#define CLCD_CUSTOM_CHAR4_BYTE1 0b00000000
+#define CLCD_CUSTOM_CHAR4_BYTE2 0b00000000
+#define CLCD_CUSTOM_CHAR4_BYTE3 0b00000000
+#define CLCD_CUSTOM_CHAR4_BYTE4 0b00000000
+#define CLCD_CUSTOM_CHAR4_BYTE5 0b00000000
+#define CLCD_CUSTOM_CHAR4_BYTE6 0b00000000
+#define CLCD_CUSTOM_CHAR4_BYTE7 0b00000000
+#define CLCD_CUSTOM_CHAR4_BYTE8 0b00000000
+
+//For 6th custom char
+#define CLCD_CUSTOM_CHAR5_BYTE0 0b00000000
+#define CLCD_CUSTOM_CHAR5_BYTE1 0b00000000
+#define CLCD_CUSTOM_CHAR5_BYTE2 0b00000000
+#define CLCD_CUSTOM_CHAR5_BYTE3 0b00000000
+#define CLCD_CUSTOM_CHAR5_BYTE4 0b00000000
+#define CLCD_CUSTOM_CHAR5_BYTE5 0b00000000
+#define CLCD_CUSTOM_CHAR5_BYTE6 0b00000000
+#define CLCD_CUSTOM_CHAR5_BYTE7 0b00000000
+#define CLCD_CUSTOM_CHAR5_BYTE8 0b00000000
+
+//For 7th custom char
+#define CLCD_CUSTOM_CHAR6_BYTE0 0b00000000
+#define CLCD_CUSTOM_CHAR6_BYTE1 0b00000000
+#define CLCD_CUSTOM_CHAR6_BYTE2 0b00000000
+#define CLCD_CUSTOM_CHAR6_BYTE3 0b00000000
+#define CLCD_CUSTOM_CHAR6_BYTE4 0b00000000
+#define CLCD_CUSTOM_CHAR6_BYTE5 0b00000000
+#define CLCD_CUSTOM_CHAR6_BYTE6 0b00000000
+#define CLCD_CUSTOM_CHAR6_BYTE7 0b00000000
+#define CLCD_CUSTOM_CHAR6_BYTE8 0b00000000
+
+//For 8th custom char
+#define CLCD_CUSTOM_CHAR7_BYTE0 0b00000000
+#define CLCD_CUSTOM_CHAR7_BYTE1 0b00000000
+#define CLCD_CUSTOM_CHAR7_BYTE2 0b00000000
+#define CLCD_CUSTOM_CHAR7_BYTE3 0b00000000
+#define CLCD_CUSTOM_CHAR7_BYTE4 0b00000000
+#define CLCD_CUSTOM_CHAR7_BYTE5 0b00000000
+#define CLCD_CUSTOM_CHAR7_BYTE6 0b00000000
+#define CLCD_CUSTOM_CHAR7_BYTE7 0b00000000
+#define CLCD_CUSTOM_CHAR7_BYTE8 0b00000000
+
+
+#endif /* HAL_CLCD_CLCD_EXTRACHAR_H_ */
